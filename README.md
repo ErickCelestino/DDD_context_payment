@@ -18,3 +18,18 @@
 ```bash
     dotnet sln add .\DDD_context_payment.Domain.csproj
 ```
+
+- Para restaurar os projetos basta utilizar
+```bash
+    dotnet restore
+```
+
+- Para criar um build da aplicação basta utilizar
+```bash
+    dotnet build
+```
+
+- Para criar referencias para outros projetos basta digitar
+```bash
+   dotnet add reference ..\DDD_context_payment.Shared\DDD_context_payment.Shared.csproj
+```
