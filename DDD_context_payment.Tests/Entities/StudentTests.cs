@@ -1,4 +1,5 @@
 using DDD_context_payment.Entities;
+using DDD_context_payment.ValueObjects;
 
 namespace DDD_context_payment.Tests;
 
@@ -8,7 +9,6 @@ public class StudentTests
     [TestMethod]
     public void AddSubscription()
     {
-        //var subscription = new Subscription(null);
-       // var student = new Student("Erick", "Celestino", "erickcelestimo@gmail.com", "1121221212");
+
     }
 }

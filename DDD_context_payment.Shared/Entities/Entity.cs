@@ -1,6 +1,8 @@
+using Flunt.Notifications;
+
 namespace DDD_context_payment.Entities;
 
-public abstract class Entity
+public abstract class Entity : Notifiable<Notification>
 {
     protected Entity()
     {

@@ -11,6 +11,7 @@ public class Student: Entity
         Email = email;
         Document = document;
         _subscription = new List<Subscription>();
+        AddNotifications(name, document, email);
    }
 
    public Name Name { get; private set; }
