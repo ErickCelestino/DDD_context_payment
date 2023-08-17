@@ -1,4 +1,6 @@
-namespace DDD_context_payment.Entities;
+using DDD_context_payment.ValueObjects;
+
+namespace DDD_context_payment.Entities.PaymentMehods;
 
 public class PayPalPayment : Payment
 {
@@ -9,9 +11,9 @@ public class PayPalPayment : Payment
         decimal total, 
         decimal totalPaid, 
         string payer, 
-        string document, 
+        Document document, 
         string address, 
-        string email): base( paidDate,  expireDate,  total,  totalPaid, payer, document, address, email)
+        Email email): base( paidDate,  expireDate,  total,  totalPaid, payer, document, address, email)
     {
         TransactionCode = transactionCode;
     }
