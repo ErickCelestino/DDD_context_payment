@@ -12,7 +12,7 @@ public class BoletoPayment : Payment
         decimal totalPaid, 
         string payer, 
         Document document, 
-        string address, 
+        Address address, 
         Email email): base( paidDate,  expireDate,  total,  totalPaid, payer, document, address, email)
     {
         BarCode = barCode;

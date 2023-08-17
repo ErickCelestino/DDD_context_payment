@@ -1,6 +1,7 @@
+using DDD_context_payment.Shared.ValueObjects;
 namespace DDD_context_payment.ValueObjects;
 
-public class Name 
+public class Name : ValueObject
 {
     public Name(string firstName, string lastName)
     {

@@ -11,7 +11,7 @@ public abstract class Payment
         decimal totalPaid, 
         string payer, 
         Document document, 
-        string address, 
+        Address address, 
         Email email)
     {
         Number = Guid.NewGuid().ToString().Replace("-","").Substring(0,10).ToUpper();
@@ -32,6 +32,6 @@ public abstract class Payment
     public decimal TotalPaid { get; private set; }
     public string Payer { get; private set; }
     public Document Document { get; private set; }
-    public string Address { get; private set; }
+    public Address Address { get; private set; }
     public Email Email { get; private set; }
 }
