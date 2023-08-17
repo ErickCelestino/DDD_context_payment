@@ -5,3 +5,7 @@
 ```bash
     dotnet new classlib
 ```
+- Para criar um setup de teste podemos utilizar 
+```bash
+    dotnet new mstest
+```
