@@ -9,6 +9,6 @@ public class StudentTests
     [TestMethod]
     public void AddSubscription()
     {
-
+        
     }
 }

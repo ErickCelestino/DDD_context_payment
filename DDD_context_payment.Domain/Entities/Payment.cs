@@ -1,8 +1,9 @@
+using Flunt.Validations;
 using DDD_context_payment.ValueObjects;
 
 namespace DDD_context_payment.Entities;
 
-public abstract class Payment
+public abstract class Payment: Entity
 {
     public Payment(
         DateTime paidDate, 
@@ -23,6 +24,12 @@ public abstract class Payment
         Document = document;
         Address = address;
         Email = email;
+
+        AddNotifications(new Contract<Payment>()
+            .Requires()
+            .IsGreaterThan(0, Total, "Payment.Total", "O total não pode ser zero")
+            .IsGreaterOrEqualsThan(Total, TotalPaid, "Payment.TotalPaid", "O valor pago é menor que o valor do pagamento")
+        );
     }
 
     public string Number { get; private set; }

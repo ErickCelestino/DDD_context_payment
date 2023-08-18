@@ -1,4 +1,5 @@
 using DDD_context_payment.ValueObjects;
+using Flunt.Validations;
 
 namespace DDD_context_payment.Entities;
 
@@ -22,9 +23,20 @@ public class Student: Entity
 
    public void AddSubscription(Subscription subscription)
    {
-      foreach(var sub in Subscriptions)
-         sub.Inactivate();
-         
-      _subscription.Add(subscription);
+      var hasSubscriptionActive = false;
+      foreach(var sub in _subscription)
+      {
+         if(sub.Active)
+            hasSubscriptionActive = true;
+      }
+   /*
+      AddNotifications(new Contract<Student>()
+         .Requires()
+         .IsFalse(hasSubscriptionActive, "Student.Subscription", "Você já tem uma assinatura ativa")
+      );
+   */
+      if(hasSubscriptionActive)
+         AddNotification("Student.Subscription", "Você já tem uma assinatura ativa");
+
    }
 }
