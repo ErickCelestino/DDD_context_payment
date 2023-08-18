@@ -3,19 +3,19 @@ using DDD_context_payment.ValueObjects;
 
 namespace DDD_context_payment.Entities;
 
-public abstract class Payment: Entity
+public abstract class Payment : Entity
 {
     public Payment(
-        DateTime paidDate, 
-        DateTime expireDate, 
-        decimal total, 
-        decimal totalPaid, 
-        string payer, 
-        Document document, 
-        Address address, 
+        DateTime paidDate,
+        DateTime expireDate,
+        decimal total,
+        decimal totalPaid,
+        string payer,
+        Document document,
+        Address address,
         Email email)
     {
-        Number = Guid.NewGuid().ToString().Replace("-","").Substring(0,10).ToUpper();
+        Number = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 10).ToUpper();
         PaidDate = paidDate;
         ExpireDate = expireDate;
         Total = total;
@@ -28,8 +28,7 @@ public abstract class Payment: Entity
         AddNotifications(new Contract<Payment>()
             .Requires()
             .IsLowerOrEqualsThan(0, Total, "Payment.Total", "O total não pode ser zero")
-            .IsGreaterOrEqualsThan(Total, TotalPaid, "Payment.TotalPaid", "O valor pago é menor que o valor do pagamento")
-        );
+            .IsGreaterOrEqualsThan(Total, TotalPaid, "Payment.TotalPaid", "O valor pago é menor que o valor do pagamento"));
     }
 
     public string Number { get; private set; }
