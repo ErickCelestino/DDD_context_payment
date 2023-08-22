@@ -1,8 +1,11 @@
 using DDD_context_payment.Domain.Enums;
+using DDD_context_payment.Shared.Commands;
+using Flunt.Notifications;
+using Flunt.Validations;
 
 namespace DDD_context_payment.Domain.Commands;
 
-public class CreateBoletoSubscriptionCommand
+public class CreateBoletoSubscriptionCommand: Notifiable<Notification>, ICommand
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }
@@ -28,4 +31,17 @@ public class CreateBoletoSubscriptionCommand
     public string State { get; set; }
     public string Coutry { get; set; }
     public string ZipCode { get; set; }
+
+    public void Validate()
+    {
+        int minStringValue = 3;
+        int maxStringValue = 40;
+
+        AddNotifications(new Contract<CreateBoletoSubscriptionCommand>()
+            .Requires()
+            .IsNotMinValue(minStringValue, FirstName, $"O primeiro nome deve conter pelo menos {minStringValue} caracteres")
+            .IsNotMaxValue(maxStringValue, FirstName, $"O primeiro nome deve conter até  {maxStringValue} caracteres")
+            .IsNotMinValue(minStringValue, LastName, $"O ultimo nome deve conter pelo menos {minStringValue} caracteres")
+            .IsNotMaxValue(maxStringValue, LastName, $"O ultimo nome deve conter até  {maxStringValue} caracteres"));
+    }
 }
