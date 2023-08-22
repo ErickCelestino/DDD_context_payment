@@ -10,7 +10,7 @@ public class CreateBoletoSubscriptionCommandTest
     {
         var command = new CreateBoletoSubscriptionCommand()
         {
-            FirstName = "aaaa"
+            FirstName = ""
         };
 
         command.Validate();

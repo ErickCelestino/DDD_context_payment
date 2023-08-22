@@ -39,6 +39,7 @@ public class CreateBoletoSubscriptionCommand: Notifiable<Notification>, ICommand
 
         AddNotifications(new Contract<CreateBoletoSubscriptionCommand>()
             .Requires()
+            .IsNotNullOrEmpty(FirstName,"O primeiro nome não pode ser vazio")
             .IsNotMinValue(minStringValue, FirstName, $"O primeiro nome deve conter pelo menos {minStringValue} caracteres")
             .IsNotMaxValue(maxStringValue, FirstName, $"O primeiro nome deve conter até  {maxStringValue} caracteres")
             .IsNotMinValue(minStringValue, LastName, $"O ultimo nome deve conter pelo menos {minStringValue} caracteres")
