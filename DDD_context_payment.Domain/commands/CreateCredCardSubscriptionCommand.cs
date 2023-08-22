@@ -1,8 +1,9 @@
 using DDD_context_payment.Domain.Enums;
+using DDD_context_payment.Shared.Commands;
 
 namespace DDD_context_payment.Domain.Commands;
 
-public class CreateCredCardSubscriptionCommand
+public class CreateCredCardSubscriptionCommand: ICommand
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }
@@ -28,4 +29,6 @@ public class CreateCredCardSubscriptionCommand
     public string State { get; set; }
     public string Coutry { get; set; }
     public string ZipCode { get; set; }
+
+   public void Validate(){}
 }
